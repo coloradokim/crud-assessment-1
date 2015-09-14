@@ -25,7 +25,6 @@
         <th>Name</th>
         <th>Email</th>
         <th>Link to Resume</th>
-        <th>Application ID Number</th>
         <th></th>
       </tr>
     </thead>
@@ -35,8 +34,6 @@
       <td>{{name}}</td>
       <td>{{email}}</td>
       <td>{{url}}</td>
-      <td>{{id}}</td>
-
       <form action="/jobs/{{_id}}/application/delete" method="post">
         <td> <input class="btn" type="submit" value="Delete"></td>
       </form>

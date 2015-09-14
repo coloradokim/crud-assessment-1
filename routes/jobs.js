@@ -85,7 +85,6 @@ router.post('/jobs/:id/application', function(req, res, next) {
 
 router.post('/jobs/:id/application/delete', function(req, res, next) {
   jobCollection.findOne({_id: req.params.id}, function(err, record) {
-    console.log(record);
     var index = record.application.indexOf(req.body.application.id)
     record.application.splice(index, 1);
     jobCollection.update({_id: req.params.id}, record, function (err,record) {
