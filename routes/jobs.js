@@ -74,7 +74,7 @@ router.post('/jobs/:id', function(req, res, next) {
   jobCollection.findOne(req.params.id, function(err, record) {
     record.application.push(req.body)
     jobCollection.update(req.params.id, record, function(err, record){
-      res.redirect('/jobs');
+      res.redirect('/jobs/');
     });
   });
 });

@@ -18,6 +18,23 @@
       <h4>This posting is still open</h4>
     {{/if}}
 
-
   <h2>Current Applicants</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Link to Resume</th>
+        <th></th>
+      </tr>
+    </thead>
+    {{#each application}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{email}}</td>
+      <td>{{url}}</td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+  </table>
+  {{/each}}
 {{/theJob}}
