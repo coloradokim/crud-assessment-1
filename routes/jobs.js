@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var db = require('monk')('localhost/jobs-demo');
 var jobCollection = db.get('jobs');
+var moment = require("moment");
+
+var now = moment(new Date());
+var date = now.format('MMMM Do YYYY, h:mm a');
 
 router.get('/jobs', function(req, res, next) {
   jobCollection.find({}, function(err, records) {
@@ -19,7 +23,7 @@ router.post('/jobs', function(req, res, next) {
     company: req.body.company,
     description: req.body.description,
     responsibilities: req.body.responsibilities,
-    timeStamp: new Date(),
+    timeStamp: date,
     open: true});
   res.redirect('/jobs')
 });
@@ -37,7 +41,7 @@ router.get('/jobs/:id/edit', function(req, res, next) {
 });
 
 router.post('/jobs/:id/update', function(req, res, next) {
-  jobCollection.updateById(req.params.id,
+  jobCollection.update({_id:req.params.id},
     {title: req.body.title,
     company: req.body.company,
     description: req.body.description,
@@ -47,6 +51,13 @@ router.post('/jobs/:id/update', function(req, res, next) {
       if (err) throw err
     });
     res.redirect('/jobs');
+});
+
+router.post('/jobs/:id/delete', function(req, res, next) {
+  jobCollection.remove({_id: req.params.id}, function(err, record){
+    if (err) throw err
+  });
+  res.redirect('/jobs')
 });
 
 
