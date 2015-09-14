@@ -25,9 +25,28 @@ router.post('/jobs', function(req, res, next) {
 });
 
 router.get('/jobs/:id', function(req, res, next) {
-  jobCollection.findOne({_id: req.params.id}, function (err, record) {
+  jobCollection.findOne({_id: req.params.id}, function(err, record) {
     res.render('jobs/show', {theJob: record});
   });
+});
+
+router.get('/jobs/:id/edit', function(req, res, next) {
+  jobCollection.findOne({_id: req.params.id}, function(err, record) {
+    res.render('jobs/edit', {theJob: record});
+  });
+});
+
+router.post('/jobs/:id/update', function(req, res, next) {
+  jobCollection.updateById(req.params.id,
+    {title: req.body.title,
+    company: req.body.company,
+    description: req.body.description,
+    responsibilities: req.body.responsibilities,
+    timeStamp: new Date(),
+    open: true}, function(err, record) {
+      if (err) throw err
+    });
+    res.redirect('/jobs');
 });
 
 
