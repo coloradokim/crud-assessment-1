@@ -1,0 +1,21 @@
+<a href="/jobs">Back to all postings</a>
+
+{{#theJob}}
+
+  <h2>{{title}} - {{company}}</h2>
+  <a href="/jobs/{{_id}}/edit"><button type="button" name="button">Edit Job Posting</button></a>
+  <h4>{{timeStamp}}</h4>
+
+  <h4>Job Description:</h4>
+  <p>{{description}}</p>
+
+  <h4>Responsibilities:</h4>
+  <p>{{responsibilities}}</p>
+
+
+  <a href="#"><button type="button" name="button">Apply for Job</button></a>
+  <h4>{{open}}</h4>
+
+
+  <h2>Current Applicants</h2>
+{{/theJob}}

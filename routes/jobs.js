@@ -18,10 +18,16 @@ router.post('/jobs', function(req, res, next) {
     title: req.body.title,
     company: req.body.company,
     description: req.body.description,
-    responsibilities: req.body.responsbilities,
+    responsibilities: req.body.responsibilities,
     timeStamp: new Date(),
     open: true});
   res.redirect('/jobs')
+});
+
+router.get('/jobs/:id', function(req, res, next) {
+  jobCollection.findOne({_id: req.params.id}, function (err, record) {
+    res.render('jobs/show', {theJob: record});
+  });
 });
 
 
