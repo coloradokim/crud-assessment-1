@@ -24,7 +24,8 @@ router.post('/jobs', function(req, res, next) {
     description: req.body.description,
     responsibilities: req.body.responsibilities,
     timeStamp: date,
-    open: true});
+    open: true,
+    application: []});
   res.redirect('/jobs')
 });
 
@@ -46,8 +47,8 @@ router.post('/jobs/:id/update', function(req, res, next) {
     company: req.body.company,
     description: req.body.description,
     responsibilities: req.body.responsibilities,
-    timeStamp: new Date(),
-    open: true}, function(err, record) {
+    timeStamp: "Updated on " + date,
+    open: req.body.open}, function(err, record) {
       if (err) throw err
     });
     res.redirect('/jobs');
@@ -58,6 +59,24 @@ router.post('/jobs/:id/delete', function(req, res, next) {
     if (err) throw err
   });
   res.redirect('/jobs')
+});
+
+router.get('/jobs/:id/application', function(req, res, next){
+  jobCollection.findOne({_id: req.params.id}, function(err, record) {
+    res.render('jobs/application', {theJob: record});
+  });
+});
+
+var counter = 0;
+router.post('/jobs/:id', function(req, res, next) {
+  counter++;
+  req.body.id = counter
+  jobCollection.findOne(req.params.id, function(err, record) {
+    record.application.push(req.body)
+    jobCollection.update(req.params.id, record, function(err, record){
+      res.redirect('/jobs');
+    });
+  });
 });
 
 

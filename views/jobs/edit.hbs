@@ -9,8 +9,14 @@
   <textarea name="description" rows="8" cols="40">{{description}}</textarea>
   <label for="responsibilities">Responsibilities</label>
   <textarea name="responsibilities" rows="8" cols="40">{{responsibilities}}</textarea>
-  <input type="submit" name="name" value="Save Posting">
-  <p>The posting is open? {{open}}</p>
+
+  <!-- {{#if open}}
+    <label for="open">This posting is...</label>
+    <input type="radio" name="open" value="true" checked>Open
+  {{/if}} -->
+    <input type="radio" name="open" value="false">Fulfilled
+
+  <input type="submit" value="Edit Posting">
   <a href="/jobs">Cancel</a>
 </form>
 

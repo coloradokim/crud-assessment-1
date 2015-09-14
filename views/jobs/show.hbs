@@ -13,8 +13,10 @@
   <p>{{responsibilities}}</p>
 
 
-  <a href="#"><button type="button" name="button">Apply for Job</button></a>
-  <h4>{{open}}</h4>
+  <a href="/jobs/{{_id}}/application"><button type="button" name="button">Apply for Job</button></a>
+    {{#if open}}
+      <h4>This posting is still open</h4>
+    {{/if}}
 
 
   <h2>Current Applicants</h2>
