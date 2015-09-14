@@ -1,0 +1,8 @@
+<h2>Current Open Postings</h2>
+<a href="/jobs/new"><button type="button" name="button">Create New Job Posting</button></a>
+
+{{#each allJobs}}
+  <h3>{{title}} - {{company}} - {{timeStamp}}</h3>
+  <p>{{description}}</p>
+  <a href="/jobs/{{_id}}"><button type="button" name="button">View Job</button></a>
+{{/each}}

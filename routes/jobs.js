@@ -4,7 +4,9 @@ var db = require('monk')('localhost/jobs-demo');
 var jobCollection = db.get('jobs');
 
 router.get('/jobs', function(req, res, next) {
-  res.render('jobs/index');
+  jobCollection.find({}, function(err, records) {
+    res.render('jobs/index', {allJobs: records});
+  });
 });
 
 router.get('/jobs/new', function(req, res, next) {
@@ -21,5 +23,6 @@ router.post('/jobs', function(req, res, next) {
     open: true});
   res.redirect('/jobs')
 });
+
 
 module.exports = router;
