@@ -48,7 +48,8 @@ router.post('/jobs/:id/update', function(req, res, next) {
     description: req.body.description,
     responsibilities: req.body.responsibilities,
     timeStamp: "Updated on " + date,
-    open: req.body.open}, function(err, record) {
+    open: req.body.open,
+    application: []}, function(err, record) {
       if (err) throw err
     });
     res.redirect('/jobs');
@@ -68,13 +69,24 @@ router.get('/jobs/:id/application', function(req, res, next){
 });
 
 var counter = 0;
-router.post('/jobs/:id', function(req, res, next) {
+router.post('/jobs/:id/application', function(req, res, next) {
   counter++;
   req.body.id = counter
   jobCollection.findOne(req.params.id, function(err, record) {
     record.application.push(req.body)
     jobCollection.update(req.params.id, record, function(err, record){
-      res.redirect('/jobs/');
+      res.redirect('/jobs/' + req.params.id);
+    });
+  });
+});
+
+router.post('/jobs/:id/application/delete', function(req, res, next) {
+  jobCollection.findOne({_id: req.params.id}, function(err, record) {
+    console.log(record);
+    var index = record.application.indexOf(req.body.application.id)
+    record.application.splice(index, 1);
+    jobCollection.update({_id: req.params.id}, record, function (err,record) {
+      res.redirect('/jobs/' + req.params.id);
     });
   });
 });

@@ -2,9 +2,9 @@
 
 {{#theJob}}
 
-  <h2>{{title}} - {{company}}</h2>
+  <h2 class="inlineTitle">{{title}} - {{company}}</h2>
   <a href="/jobs/{{_id}}/edit"><button type="button" name="button">Edit Job Posting</button></a>
-  <h4>Posted on {{timeStamp}}</h4>
+  <h4>{{timeStamp}}</h4>
 
   <h4>Job Description:</h4>
   <p>{{description}}</p>
@@ -28,13 +28,17 @@
         <th></th>
       </tr>
     </thead>
-    {{#each application}}
+    <tbody>
+  {{#each application}}
     <tr>
       <td>{{name}}</td>
       <td>{{email}}</td>
       <td>{{url}}</td>
-      <td><a href="#">Delete</a></td>
+      <form action="/jobs/{{_id}}/application/delete" method="post">
+        <td> <input type="submit" value="Delete"></td>
+      </form>
     </tr>
+    </tbody>
   </table>
   {{/each}}
 {{/theJob}}
