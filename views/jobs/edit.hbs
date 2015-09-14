@@ -10,18 +10,21 @@
   <label for="responsibilities">Responsibilities</label>
   <textarea name="responsibilities" rows="8" cols="40">{{responsibilities}}</textarea>
 
-  <!-- {{#if open}}
+  {{#if theJob.open}}
     <label for="open">This posting is...</label>
-    <input type="radio" name="open" value="true" checked>Open
-  {{/if}} -->
-    <input type="radio" name="open" value="false">Fulfilled
+    <input class="inlineTitle" type="radio" name="open" value="true" checked>Open
+    <input class="inlineTitle" type="radio" name="open" value="false">Fulfilled
+  {{else}}
+  <input class="inlineTitle" type="radio" name="open" value="true" >Open
+  <input class="inlineTitle" type="radio" name="open" value="false" checked>Fulfilled
+  {{/if}}
 
-  <input type="submit" value="Edit Posting">
-  <a href="/jobs">Cancel</a>
+  <input class="btn" type="submit" value="Edit Posting">
 </form>
 
 <form action="/jobs/{{_id}}/delete" method="post">
-  <input type="submit" value="Delete Posting">
+  <input class="btn" type="submit" value="Delete Posting">
 </form>
+<a href="/jobs">Cancel</a>
 
 {{/theJob}}

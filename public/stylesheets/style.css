@@ -74,20 +74,30 @@ h4 {
   font-size: 2em;
 }
 
-h5, label{
+h5 {
   font-size: 1.5em;
+  padding: .5em
+}
+
+label {
+  font-size: 1.5em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+
 }
 
 p, td {
   font-family: 'PT Serif', serif;
   word-spacing: .5em;
+  padding: .5em;
 }
 
 input, textarea {
   display: block;
+  margin: .5em;
 }
 
-button {
+button, .btn {
   background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
   background-image: -moz-linear-gradient(top, #3498db, #2980b9);
@@ -105,7 +115,7 @@ button {
   margin: .25em;
 }
 
-button:hover {
+button:hover, .btn:hover {
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -115,12 +125,24 @@ button:hover {
   text-decoration: none;
 }
 
+.floatRight{
+  float: right;
+}
+
 .inlineTitle {
   display: inline;
+}
+
+.spaceButton {
+  margin: 2em 0;
 }
 
 .jobPostings {
   border: 1px grey solid;
   padding: .75em;
   padding-top: .5em;
+}
+
+.alert {
+  color: red;
 }

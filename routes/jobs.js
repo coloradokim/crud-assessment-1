@@ -23,7 +23,7 @@ router.post('/jobs', function(req, res, next) {
     company: req.body.company,
     description: req.body.description,
     responsibilities: req.body.responsibilities,
-    timeStamp: date,
+    timeStamp: "Posted on " + date,
     open: true,
     application: []});
   res.redirect('/jobs')

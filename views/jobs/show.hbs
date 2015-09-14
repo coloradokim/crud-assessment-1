@@ -1,22 +1,23 @@
-<a href="/jobs">Back to all postings</a>
 
 {{#theJob}}
-
   <h2 class="inlineTitle">{{title}} - {{company}}</h2>
-  <a href="/jobs/{{_id}}/edit"><button type="button" name="button">Edit Job Posting</button></a>
-  <h4>{{timeStamp}}</h4>
+  <a href="/jobs/{{_id}}/edit"><button class="floatRight" type="button" name="button">Edit Job Posting</button></a>
+  <h5>{{timeStamp}}</h5>
 
-  <h4>Job Description:</h4>
+  <h5>Job Description:</h5>
   <p>{{description}}</p>
 
-  <h4>Responsibilities:</h4>
+  <h5>Responsibilities:</h5>
   <p>{{responsibilities}}</p>
 
+  {{#if theJob.open}}
+    <h5 class="alert">This posting is still open!</h5>
+  {{else}}
+    <h5 class="alert">Sorry! This posting has been filled.</h5>
+  {{/if}}
 
-  <a href="/jobs/{{_id}}/application"><button type="button" name="button">Apply for Job</button></a>
-    {{#if open}}
-      <h4>This posting is still open</h4>
-    {{/if}}
+  <a href="/jobs/{{_id}}/application"><button class="spaceButton" type="button" name="button">Apply for Job</button></a>
+  <a class = "floatRight" href="/jobs">Back to all postings</a>
 
   <h2>Current Applicants</h2>
   <table>
@@ -31,11 +32,11 @@
     <tbody>
   {{#each application}}
     <tr>
-      <td>{{name}}</td>
-      <td>{{email}}</td>
-      <td>{{url}}</td>
+      <th>{{name}}</th>
+      <th>{{email}}</th>
+      <th>{{url}}</th>
       <form action="/jobs/{{_id}}/application/delete" method="post">
-        <td> <input type="submit" value="Delete"></td>
+        <td> <input class="btn" type="submit" value="Delete"></td>
       </form>
     </tr>
     </tbody>
