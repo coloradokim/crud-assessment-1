@@ -12,11 +12,11 @@
 
   {{#if theJob.open}}
     <label for="open">This posting is...</label>
-    <input class="inlineTitle" type="radio" name="open" value="true" checked>Open
-    <input class="inlineTitle" type="radio" name="open" value="false">Fulfilled
+    <input type="radio" name="open" value="true" checked>Open
+    <input type="radio" name="open" value="false">Fulfilled
   {{else}}
-  <input class="inlineTitle" type="radio" name="open" value="true" >Open
-  <input class="inlineTitle" type="radio" name="open" value="false" checked>Fulfilled
+    <input type="radio" name="open" value="true" >Open
+    <input type="radio" name="open" value="false" checked>Fulfilled
   {{/if}}
 
   <input class="btn" type="submit" value="Edit Posting">

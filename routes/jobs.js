@@ -3,9 +3,7 @@ var router = express.Router();
 var db = require('monk')('localhost/jobs-demo');
 var jobCollection = db.get('jobs');
 var moment = require("moment");
-
 var now = moment(new Date());
-var date = now.format('MMMM Do YYYY, h:mm a');
 
 router.get('/jobs', function(req, res, next) {
   jobCollection.find({}, function(err, records) {
@@ -18,6 +16,7 @@ router.get('/jobs/new', function(req, res, next) {
 });
 
 router.post('/jobs', function(req, res, next) {
+  var date = now.format('MMMM Do YYYY, h:mm a');
   jobCollection.insert({
     title: req.body.title,
     company: req.body.company,
@@ -42,6 +41,9 @@ router.get('/jobs/:id/edit', function(req, res, next) {
 });
 
 router.post('/jobs/:id/update', function(req, res, next) {
+  var date = now.format('MMMM Do YYYY, h:mm a');
+  jobCollection.findOne({_id:req.params.id}, function(err, record) {
+    var apps = record.application;
   jobCollection.update({_id:req.params.id},
     {title: req.body.title,
     company: req.body.company,
@@ -49,10 +51,11 @@ router.post('/jobs/:id/update', function(req, res, next) {
     responsibilities: req.body.responsibilities,
     timeStamp: "Updated on " + date,
     open: req.body.open,
-    application: []}, function(err, record) {
+    application: apps}, function(err, record) {
       if (err) throw err
     });
-    res.redirect('/jobs');
+  });
+    res.redirect('/jobs/' + req.params.id);
 });
 
 router.post('/jobs/:id/delete', function(req, res, next) {

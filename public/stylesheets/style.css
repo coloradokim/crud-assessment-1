@@ -50,7 +50,7 @@ table {
 /*Begin Kim Changes*/
 
 body {
-  padding: 4em;
+  padding: 4.5em;
 }
 
 h1, h2, h3, h4, h5 {
@@ -83,7 +83,6 @@ label {
   font-size: 1.5em;
   padding-top: .5em;
   padding-bottom: .5em;
-
 }
 
 p, td {
@@ -95,6 +94,16 @@ p, td {
 input, textarea {
   display: block;
   margin: .5em;
+  width: 50%
+}
+
+table, tr {
+  width: 100%;
+  border: 1px grey solid;
+}
+
+th {
+  background-color: rgb(247,247,247);
 }
 
 button, .btn {
@@ -113,6 +122,7 @@ button, .btn {
   padding: 7px 17px 7px 17px;
   text-decoration: none;
   margin: .25em;
+  width: inherit;
 }
 
 button:hover, .btn:hover {

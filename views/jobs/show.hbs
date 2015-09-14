@@ -16,9 +16,8 @@
     <h5 class="alert">Sorry! This posting has been filled.</h5>
   {{/if}}
 
-  <a href="/jobs/{{_id}}/application"><button class="spaceButton" type="button" name="button">Apply for Job</button></a>
+  <a href="/jobs/{{_id}}/application/"><button class="spaceButton" type="button" name="button">Apply for Job</button></a>
   <a class = "floatRight" href="/jobs">Back to all postings</a>
-
   <h2>Current Applicants</h2>
   <table>
     <thead>
@@ -26,20 +25,23 @@
         <th>Name</th>
         <th>Email</th>
         <th>Link to Resume</th>
+        <th>Application ID Number</th>
         <th></th>
       </tr>
     </thead>
+    {{#each application}}
     <tbody>
-  {{#each application}}
     <tr>
-      <th>{{name}}</th>
-      <th>{{email}}</th>
-      <th>{{url}}</th>
+      <td>{{name}}</td>
+      <td>{{email}}</td>
+      <td>{{url}}</td>
+      <td>{{id}}</td>
+
       <form action="/jobs/{{_id}}/application/delete" method="post">
         <td> <input class="btn" type="submit" value="Delete"></td>
       </form>
+    {{/each}}
     </tr>
     </tbody>
   </table>
-  {{/each}}
 {{/theJob}}
