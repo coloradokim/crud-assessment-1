@@ -10,7 +10,7 @@ var record = {
 
 
 
-var newArr = record.application
+var newArr = record.application <= use forEach 
   var findID = function(arr) {
     var index= record.application.indexOf(record.application.id=1)
     console.log(index);
