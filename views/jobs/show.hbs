@@ -19,14 +19,29 @@
   <a href="/jobs/{{_id}}/application/"><button class="spaceButton" type="button" name="button">Apply for Job</button></a>
   <a class = "floatRight" href="/jobs">Back to all postings</a>
   <h2>Current Applicants</h2>
+
+  <!-- <table>
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Link to Resume</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{name}}</td>
+      <td>{{email}}</td>
+      <td>{{link}}</td>
+      <td><a href="/jobs/{{../_id}}/apply/delete">delete</a></td>
+    </tr>
+  </tbody> -->
+</table>
   <table>
     <thead>
-      <tr>
         <th>Name</th>
         <th>Email</th>
         <th>Link to Resume</th>
         <th></th>
-      </tr>
     </thead>
     {{#each application}}
     <tbody>
@@ -34,7 +49,7 @@
       <td>{{name}}</td>
       <td>{{email}}</td>
       <td>{{url}}</td>
-      <form action="/jobs/{{_id}}/application/delete" method="post">
+      <form action="/jobs/{{../_id}}/application/delete" method="post">
         <td> <input class="btn" type="submit" value="Delete"></td>
       </form>
     {{/each}}
